@@ -1,0 +1,49 @@
+<%- include('../includes/header.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+<main>
+  <h1>Cult Articles</h1>
+  <div class="container">
+    <div class="row">
+    <% if (articles.length > 0) { %>
+        
+            <% for (let article of articles) { %>
+              
+              <% if (article.category === 'cult') { %>
+                  <div class="col-lg-4">
+                    <article>
+                      <header>
+                          <h1> <%= article.title %></h1>
+                      </header>
+                      <div>
+                          <img  height="200px" width="200px" src="/images/<%= article.image%>.png"
+                              alt="<%= article.title %>">
+                      </div>
+                      <div>
+                          <h2><%= article.date %></h2>
+                          <h2><%= article.month %></h2>
+                          <h2><%= article.author %></h2>
+                          <h2><%= article.category %></h2>
+                          <p><%= article.shortdescription %></p>
+                          <a href="/articles/<%= article.id %>" class="btn">Know more</a>
+                      </div>
+                    </article>
+                  </div>
+                  <% } %>
+      
+            <% } %>
+      
+    <% } else { %>
+        <h1>No Alumni Articles Found!</h1>
+    <% } %>
+  </div>
+</div>
+</main>
+
+
+
+
+<%- include('../includes/footer.ejs') %>

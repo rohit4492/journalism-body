@@ -1,0 +1,44 @@
+<%- include('../includes/header.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+<main>
+  <h1>Authors</h1>
+  <div class="container">
+    <div class="row">
+    <% if (authors.length > 0) { %>
+        
+            <% for (let author of authors) { %>
+              
+                  <div class="col-lg-4">
+                    <article>
+                      <header>
+                          <h1> <%= author.name %></h1>
+                      </header>
+                      <div>
+                          <img  height="200px" width="200px" src="/images/authors/<%= author.name%>.png"
+                              alt="<%= author.title %>">
+                      </div>
+                      <div>
+                          <p><%= author.shortbio %></p>
+                          <a href="/authors/<%= author.id %>" class="btn">Know more</a>
+                      </div>
+                    </article>
+                  </div>
+                 
+      
+            <% } %>
+      
+    <% } else { %>
+        <h1>No Trending Articles Found!</h1>
+    <% } %>
+  </div>
+</div>
+</main>
+
+
+
+
+<%- include('../includes/footer.ejs') %>

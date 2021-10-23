@@ -1,0 +1,61 @@
+<%- include('../includes/header.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %>
+<main>
+  
+  <div class="container">
+    
+                    <article>
+                      <header>
+                          <h1> <%= article.title %></h1>
+                      </header>
+                      <div>
+                          <img  height="200px" width="200px" src="/images/<%= article.image%>.png
+                              alt="<%= article.title %>">
+                      </div>
+                      <div>
+                          <h2><%= article.date %></h2>
+                          <h2><%= article.month %></h2>
+                          <p><%= article.description %></p>
+                      </div>
+                    </article>
+                    <% if (article.comments.length > 0) { %>
+        
+                        <% for (let comment of article.comments) { %>
+                            <p><%= comment.name %></p>
+                            <p><%=comment.comment %></p>
+                        <% } %>
+      
+                   <% } else { %>
+                      <h1>No comments</h1>
+                   <% } %>
+
+                   <% if (!isLogged) { %>
+                     <a>click here to login</a>
+                   <% } else { %>
+                    
+                    <form action="/add-comment" method="POST" >
+                        
+                        
+                        <div class="form-group">
+                            <label for="comment">Add Comment</label>
+                            <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
+                            <input type="hidden" id="artId" name="artId" value="<%= article._id %>">
+                        </div>
+                    
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+
+                   <%}%>
+                  
+</div>
+</main>
+
+
+
+
+<%- include('../includes/footer.ejs') %>

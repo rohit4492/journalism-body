@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Journalism Body</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <!-- <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a> -->
+        <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+        <a class="nav-link <%= path === '/about' ? 'active' : '' %>" href="/about">About</a>
+        <a class="nav-link <%= path === '/alumni' ? 'active' : '' %>" href="/alumni">Alumni</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle <%= path === '/institute' ? 'active' : '' %> " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Institute
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/tech-articles">Tech Articles</a>
+            <a class="dropdown-item" href="/sports-articles">Sports Articles</a>
+            <a class="dropdown-item" href="/cult-articles">Cult Articles</a>
+          </div>
+        </li>
+        <a class="nav-link <%= path === '/author' ? 'active' : '' %>" href="/author">Authors</a>
+        
+
+        <% if (!isLogged) { %>
+
+          <a class="nav-link" href="/auth/google"><i class="fa fa-user"></i>Login</a>
+          <% } else { %>
+            <% if (user.isadmin === "true") { %>
+              <a class="nav-link <%= path === '/add-article' ? 'active' : '' %>" href="/add-article">Add Articles</a>
+              <a class="nav-link <%= path === '/add-author' ? 'active' : '' %>" href="/add-author">Add Author</a>
+              <%}%>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle <%= path === '/institute' ? 'active' : '' %> " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= user.displayName %>
+              </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href=""> <%= user.displayName %></a>
+              <a class="dropdown-item" href="/logout">logout</a>
+            </div>
+          </li>
+          <%}%>
+        <!-- <a class="nav-link  <%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+        <a class="nav-link  <%= path === '/logout' ? 'active' : '' %>" href="/logout">Logout</a> -->
+
+      </div>
+    </div>
+  </nav>
